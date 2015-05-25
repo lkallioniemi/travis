@@ -1,0 +1,26 @@
+{
+    "require": {
+        "ext-memcached": "*",
+        "ext-mbstring": "*",
+        "ext-gd": "*",
+        "johnpbloch/wordpress": "*",
+        "squizlabs/php_codesniffer": "2.*",
+        "wp-coding-standards/wpcs": "*"
+    },
+    "reguire-dev":{
+        "php": ">=5.3.3",
+        "phpunit/phpunit": "~4",
+        "phpunit/php-file-iterator": "~1.3",
+        "phpunit/php-token-stream": "~1.3",
+        "phpunit/php-text-template": "~1.2",
+        "ext-xdebug": ">=2.1.4"
+    },
+    "suggest": {
+        "ext-dom": "*",
+        "ext-xdebug": ">=2.2.1",
+        "ext-xmlwriter": "*"
+    },
+    "extra": {
+        "wordpress-install-dir": "public/wordpress"
+    }
+}

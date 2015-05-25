@@ -1,0 +1,20 @@
+/*------------------------------------*\
+    $LAYOUT
+\*------------------------------------*/
+
+
+// Layout wrap
+
+.l-wrap {
+    width:  100%;
+}
+
+
+// Constrained wrap. Change values per site
+
+.l-constrained {
+    margin: 0 auto;
+    width: 92%;
+    max-width: 100em;
+}
+
