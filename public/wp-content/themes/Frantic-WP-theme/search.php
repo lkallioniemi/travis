@@ -1,56 +1,42 @@
 <?php
 /**
- * Template for displaying Search Results pages
+ * Template for displaying search results
+ *
+ * @package _frc
  */
 
-get_header(); ?>
+	get_header(); ?>
 
-    <div class="l-constrained">
+	<section id="primary" class="content-area">
+		<main id="main" class="site-main" role="main">
 
-        <div role="main" class="l-main">
+		<?php if ( have_posts() ) : ?>
 
-            <?php if ( have_posts() ) : ?>
+			<header class="page-header">
+				<h1 class="page-title"><?php printf( esc_html__( 'Search Results for: %s', '_frc' ), get_search_query() ); ?></h1>
+			</header>
 
-                <header class="page-header">
-                    <h1 class="page-title"><?php printf( __( 'Search Results for: %s', 'frantic' ), '<span>' . get_search_query() . '</span>' ); ?></h1>
-                </header>
+			<?php while ( have_posts() ) : the_post();
 
-                <?php /* Start the Loop */ ?>
-                <?php while ( have_posts() ) : the_post(); ?>
-                    <?php
-                        /*
-                         * Include the Post-Format-specific template for the content.
-                         * If you want to overload this in a child theme then include a file
-                         * called content-___.php (where ___ is the Post Format name) and that
-                         * will be used instead.
-                         */
-                        get_template_part( 'content', get_post_format() );
-                    ?>
+			/**
+			 * Run the loop for the search to output the results.
+			 * If you want to overload this in a child theme then include a file
+			 * called content-search.php and that will be used instead.
+			 */
+				get_template_part( 'template-parts/content', 'search' );
 
-                <?php endwhile; ?>
+				endwhile;
 
-            <?php else : ?>
+				the_posts_navigation();
 
-                <article id="post-0" class="post success no-results not-found">
-                    <header class="entry-header">
-                        <h2 class="entry-title"><?php _e( 'Nothing Found', 'frantic' ); ?></h2>
-                    </header><!-- .entry-header -->
+			else :
 
-                    <div class="entry-content">
-                        <p><?php _e( 'Sorry, but nothing matched your search criteria. Please try again with some different keywords.', 'frantic' ); ?></p>
-                    </div><!-- .entry-content -->
-                </article><!-- #post-0 -->
+				get_template_part( 'template-parts/content', 'none' );
 
-            <?php endif; ?>
+			endif; ?>
 
-</div><!-- end main -->
+		</main>
+	</section>
 
-        <aside role="complementary" class="l-complementary">
-
-
-
-        </aside><!-- end complementary -->
-
-    </div><!-- end content -->
-
+<?php /* get_sidebar(); */ ?>
 <?php get_footer(); ?>

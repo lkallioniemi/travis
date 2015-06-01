@@ -1,35 +1,30 @@
-<?php get_header(); ?>
+<?php
+/**
+ * Template for displaying all pages
+ *
+ * This is the template that displays all pages by default.
+ * Please note that this is the WordPress construct of pages
+ * and that other 'pages' on your WordPress site will use a
+ * different template.
+ *
+ * @package _frc
+ */
 
-    <div class="l-constrained">
+	get_header(); ?>
 
-        <div role="main" class="l-main">
+	<div class="content-area">
+		<main id="main" class="site-main" role="main">
 
-            <?php if (have_posts()) : ?>
+			<?php while ( have_posts() ) : the_post();
 
-                <?php while (have_posts()) : the_post(); ?>
+				get_template_part( 'template-parts/content', 'page' );
 
-                    <article <?php post_class(); ?>>
+				// if ( comments_open() || get_comments_number() ) comments_template();
 
-                        <h2><?php the_title(); ?></h2>
+			endwhile; ?>
 
+		</main>
+	</div>
 
-                            <?php the_content(); ?>
-
-
-                    </article>
-
-                <?php endwhile; ?>
-
-            <?php endif; ?>
-
-        </div><!-- end main -->
-
-        <aside role="complementary" class="l-complementary">
-
-
-
-        </aside><!-- end complementary -->
-
-    </div><!-- end content -->
-
+<?php /* get_sidebar(); */ ?>
 <?php get_footer(); ?>

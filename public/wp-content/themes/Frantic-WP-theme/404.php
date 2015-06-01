@@ -1,21 +1,29 @@
-<?php get_header(); ?>
+<?php
+/**
+ * Template for displaying 404 pages (not found)
+ *
+ * @package _frc
+ */
 
-    <div class="l-constrained">
+	get_header(); ?>
 
-        <div role="main" class="l-main">
+	<div class="content-area">
+		<main id="main" class="site-main" role="main">
 
-            <h2>Page not found</h2>
+			<section class="error-404 not-found">
+				<header class="page-header">
+					<h1 class="page-title"><?php esc_html_e( 'That page can&rsquo;t be found.', '_frc' ); ?></h1>
+				</header>
 
-            <p>Lorem ipsum</p>
+				<div class="page-content">
+					<p><?php esc_html_e( 'It looks like nothing was found at this location. Maybe try one of the links below or a search?', '_frc' ); ?></p>
 
-        </div><!-- end main -->
+					<?php get_search_form(); ?>
 
-        <aside role="complementary" class="l-complementary">
+				</div>
+			</section>
 
-
-
-        </aside><!-- end complementary -->
-
-    </div><!-- end content -->
+		</main>
+	</div>
 
 <?php get_footer(); ?>

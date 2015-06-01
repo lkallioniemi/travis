@@ -1,0 +1,54 @@
+{
+
+	"theme" : {
+
+		"name"             : "_frc",
+		"description"      : "Theme for <code>_frc</code>",
+		"theme_uri"        : "",
+		"author"           : "Frantic",
+		"author_uri"       : "http://www.frantic.com/",
+		"text_domain"      : "_frc",
+		"version"          : "1.0.0",
+
+		"location"         : "../../.",
+
+		"assets" : {
+
+			"css" : {
+				"location"     : "../css",
+				"admin"        : "admin.css",
+				"editor"       : "editor-style.css",
+				"login"        : "login.css",
+				"main"         : "main.min.css",
+				"print"        : "print.css"
+			},
+
+			"js" : {
+				"location"     : "../js",
+				"main"         : "main.min.js"
+			}
+
+		},
+
+		"source" : {
+
+			"js"               : {
+				"location"     : "js",
+				"main"         : "main.js"
+			},
+
+			"lang_files"       : "../../languages",
+			"php_files"        : "../../.",
+
+			"sass" : {
+				"location"     : "sass",
+				"admin"        : "admin.scss",
+				"editor"       : "editor-style.scss",
+				"login"        : "login.scss",
+				"main"         : "main.scss",
+				"print"        : "print.scss"
+			}
+
+		}
+	}
+}

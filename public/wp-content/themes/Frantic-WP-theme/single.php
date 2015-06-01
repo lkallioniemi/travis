@@ -1,49 +1,27 @@
-<?php get_header(); ?>
+<?php
+/**
+ * Template for displaying all single posts
+ *
+ * @package _frc
+ */
 
-    <div class="l-constrained">
+	get_header(); ?>
 
-        <div role="main" class="l-main">
+	<div class="content-area">
+		<main id="main" class="site-main" role="main">
 
-            <?php if (have_posts()) : ?>
+		<?php while ( have_posts() ) : the_post();
 
-                <?php while (have_posts()) : the_post(); ?>
+			get_template_part( 'template-parts/content', 'single' );
 
-                    <article <?php post_class(); ?>>
+			the_post_navigation();
 
-                        <h2><?php the_title(); ?></h2>
+			# if ( comments_open() || get_comments_number() ) comments_template();
 
-                            <?php if(has_post_thumbnail()): ?>
-                                <?php echo get_the_post_thumbnail($post->ID, 'full', array('title' => "")); ?>
-                            <?php endif; ?>
+		endwhile; ?>
 
-                            <?php the_content(); ?>
+		</main>
+	</div>
 
-
-                        <!--section id="comments" class="hentry-comments">
-
-                            <?php comments_template(); ?>
-
-                        </section-->
-
-                    </article>
-
-                    <?php wp_list_categories(); ?>
-
-                    <?php the_tags(); ?>
-
-
-                <?php endwhile; ?>
-
-            <?php endif; ?>
-
-        </div><!-- end main -->
-
-        <aside role="complementary" class="l-complementary">
-
-
-
-        </aside><!-- end complementary -->
-
-    </div><!-- end content -->
-
+<?php /* get_sidebar(); */ ?>
 <?php get_footer(); ?>

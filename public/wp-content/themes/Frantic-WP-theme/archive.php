@@ -1,86 +1,52 @@
-<?php get_header(); ?>
+<?php
+/**
+ * Template for displaying archive pages
+ *
+ * Learn more: http://codex.wordpress.org/Template_Hierarchy
+ *
+ * @package _frc
+ */
 
-    <div class="l-constrained">
+	get_header(); ?>
 
-        <div role="main" class="l-main">
+	<div class="content-area">
+		<main class="site-main" role="main">
 
-                <?php if (have_posts()) : ?>
+		<?php if ( have_posts() ) : ?>
 
-                    <?php $post = $posts[0]; ?>
+			<header class="page-header">
+				<?php
+					theme_archive_title( '<h1 class="page-title">', '</h1>' );
+					the_archive_description( '<div class="taxonomy-description">', '</div>' );
+				?>
+			</header>
 
-                    <?php /* Category archive */ if (is_category()) { ?>
-                        <h1>Archive for the &#8216;<?php single_cat_title(); ?>&#8217; Category</h1>
+			<div class="hfeed">
 
-                    <?php /* Tag archive */ } elseif( is_tag() ) { ?>
-                        <h1>Posts Tagged &#8216;<?php single_tag_title(); ?>&#8217;</h1>
+			<?php while ( have_posts() ) : the_post(); ?>
 
-                    <?php /* Daily archive */ } elseif (is_day()) { ?>
-                        <h1>Archive for <?php the_time('F jS, Y'); ?></h1>
+				<?php
+					/* Include the Post-Format-specific template for the content.
+					 * If you want to override this in a child theme, then include a file
+					 * called content-___.php (where ___ is the Post Format name) and that will be used instead.
+					 */
+					get_template_part( 'template-parts/content', get_post_format() );
+				?>
 
-                    <?php /* Monthly archive */ } elseif (is_month()) { ?>
-                        <h1>Archive for <?php the_time('F, Y'); ?></h1>
+			<?php endwhile; ?>
 
-                    <?php /* Yearly archive */ } elseif (is_year()) { ?>
-                        <h1>Archive for <?php the_time('Y'); ?></h1>
+			</div>
 
-                    <?php /* Author archive */ } elseif (is_author()) { ?>
-                        <h1>Author Archive</h1>
+			<?php the_posts_navigation(); ?>
 
-                    <?php /* Paged archive */ } elseif (isset($_GET['paged']) && !empty($_GET['paged'])) { ?>
-                        <h1>Blog Archives</h1>
+		<?php else : ?>
 
-                <?php } ?>
+			<?php get_template_part( 'template-parts/content', 'none' ); ?>
 
+		<?php endif; ?>
 
-                <section>
+		</main>
+	</div>
 
-                <?php while (have_posts()) : the_post(); ?>
-
-                    <article <?php post_class(); ?>>
-
-                        <h2 id="post-<?php the_ID(); ?>" class="entry-title">
-                            <a rel="bookmark" href="<?php the_permalink() ?>"><?php the_title(); ?></a>
-                        </h2>
-
-
-                            <?php the_content(); ?>
-
-
-                    </article>
-
-                    <?php endwhile; ?>
-
-                    <?php else : ?>
-
-                        <h2>Nothing found</h2>
-
-                    <?php endif; ?>
-
-
-        </div><!-- end main -->
-
-        <aside role="complementary" class="l-complementary">
-
-
-
-        </aside><!-- end complementary -->
-
-    </div><!-- end content -->
-
+<?php /* get_sidebar(); */ ?>
 <?php get_footer(); ?>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

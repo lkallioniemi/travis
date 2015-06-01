@@ -1,37 +1,33 @@
 <?php
+/**
+ * _frc functions and theme setup
+ *
+ * @package _frc
+ */
 
 /**
- * External libs for cleanup, registerings scripts, etc.
+ * Theme setup
  */
-require_once('lib/cleanup.php');
-require_once('lib/scripts.php');
-require_once('lib/disable_pingback.php');
-require_once('lib/post_types_and_taxonomies.php');
-require_once('lib/admin.php');
-require_once('lib/navigation.php');
-
+	require get_template_directory() . '/inc/theme-setup.php';
+	require get_template_directory() . '/inc/theme-assets.php';
+	require get_template_directory() . '/inc/admin.php';
+	# require get_template_directory() . '/inc/customizer.php';
+	# require get_template_directory() . '/inc/localize-js.php';
+	require get_template_directory() . '/inc/login-redirects.php';
+	require get_template_directory() . '/inc/template-tags.php';
+	require get_template_directory() . '/inc/wordpress.php';
 
 /**
- * Theme feature(s) support.
+ * Register custom elements
  */
-add_theme_support('automatic-feed-links');
-add_theme_support('menus');
-add_theme_support('post-thumbnails');
-add_theme_support('html5', array('comment-list', 'comment-form', 'search-form'));
-
-// add_post_type_support('page', 'excerpt');
-
-// If you have Articles in use on your site,
-// enable this to allow widgets to show.
-if ( function_exists('register_sidebar') ) {
-  register_sidebar();
-}
-
+	require get_template_directory() . '/inc/register-navigation.php';
+	require get_template_directory() . '/inc/register-post-types.php';
+	require get_template_directory() . '/inc/register-sidebars.php';
+	require get_template_directory() . '/inc/register-taxonomies.php';
 
 /**
- * Register menu(s).
+ * Plugins
  */
-register_nav_menu('main', 'main');
-
-
-?>
+	# require get_template_directory() . '/inc/acf.php';
+	# require get_template_directory() . '/inc/gravity-forms.php';
+	# require get_template_directory() . '/inc/wpml.php';
