@@ -11,12 +11,12 @@
 	add_action( 'edit_term', 'theme_transient_flusher' );
 	add_action( 'save_post', 'theme_transient_flusher' );
 	add_action( 'wp_update_nav_menu', 'theme_transient_flusher' );
-	function theme_transient_flusher() {
+function theme_transient_flusher() {
 
-		if ( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE ) return;
+	if ( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE ) { return; }
 
-		delete_transient( '_frc_transient_name' );
-	}
+	delete_transient( '_frc_transient_name' );
+}
 
 /**
  * Use WPML's icl_get_languages() to delete different language versions of transients

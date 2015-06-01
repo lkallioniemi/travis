@@ -12,72 +12,72 @@
  * @link https://core.trac.wordpress.org/browser/tags/4.1.1/src/wp-includes/post-template.php#L501
  */
 	add_filter( 'body_class', 'theme_body_classes', 10, 2 );
-	if ( ! function_exists( 'theme_body_classes' ) ) {
-		function theme_body_classes( $wp_classes = array(), $extra_classes = array() ) {
+if ( ! function_exists( 'theme_body_classes' ) ) {
+	function theme_body_classes( $wp_classes = array(), $extra_classes = array() ) {
 
-			global $post;
+		global $post;
 
-			// List of general classes we want to keep
-			$whitelist = array(
-				'admin-bar',
-				'attachment',
-				'archive',
-				'blog',
-				'category',
-				'date',
-				'error404',
-				'has-post-thumbnail',
-				'home',
-				'logged-in',
-				'page',
-				'post',
-				'post-password-required',
-				'post-type-archive',
-				'search',
-				'single',
-				'singular',
-				'sticky',
-				'tag',
-			);
+		// List of general classes we want to keep
+		$whitelist = array(
+			'admin-bar',
+			'attachment',
+			'archive',
+			'blog',
+			'category',
+			'date',
+			'error404',
+			'has-post-thumbnail',
+			'home',
+			'logged-in',
+			'page',
+			'post',
+			'post-password-required',
+			'post-type-archive',
+			'search',
+			'single',
+			'singular',
+			'sticky',
+			'tag',
+		);
 
-			// List of dynamic classes we want to keep
-			$dynamic_classes = array(
-				'attachmentid-([a-zA-Z])', # attachmentid-[attachment-name]
-				'category-([a-zA-Z])',     # category-[category-name]
-				'page-id-(.)',             # page-id-[id]
-				'postid-(.)',              # postid-[id]
-				'post-type-archive-(.)',   # post-type-archive-[post-type]
-				'single-format-(.)',       # single-format-[post-format]
-				'tag-([a-zA-Z])',          # tag-[tag-name]
-			);
+		// List of dynamic classes we want to keep
+		$dynamic_classes = array(
+			'attachmentid-([a-zA-Z])', # attachmentid-[attachment-name]
+			'category-([a-zA-Z])',     # category-[category-name]
+			'page-id-(.)',             # page-id-[id]
+			'postid-(.)',              # postid-[id]
+			'post-type-archive-(.)',   # post-type-archive-[post-type]
+			'single-format-(.)',       # single-format-[post-format]
+			'tag-([a-zA-Z])',          # tag-[tag-name]
+		);
 
-			$pattern = '/(' . implode( '|', $dynamic_classes ) . ')/i';
+		$pattern = '/(' . implode( '|', $dynamic_classes ) . ')/i';
 
-			foreach ( $wp_classes as $wp_class ) {
-				if ( preg_match( $pattern, $wp_class ) ) array_push( $extra_classes, $wp_class );
-			}
-
-			// Custom classes we want to add
-			if ( get_post_type() && ! is_attachment() && ! is_search() ) array_push( $extra_classes, 'post-type-' . sanitize_html_class( get_post_type() ) ); # [post-type]-[slug]
-			if ( is_page_template() ) array_push( $extra_classes, 'template-' . sanitize_html_class( pathinfo( get_page_template() )['filename'] ) );  # template-[filename]
-			if ( is_front_page() ) array_push( $extra_classes, 'template-front-page' ); # template-front-page
-			if ( is_home() ) array_push( $extra_classes, 'template-blog' ); # template-blog
-
-			// Remove non-whitelisted classes
-			$wp_classes = array_intersect( $wp_classes, $whitelist );
-
-			// Merge extra classes and sort everything alphabetically
-			$theme_classes = array_merge( $wp_classes, $extra_classes );
-			sort( $theme_classes );
-
-			// Return modified classes
-			return $theme_classes;
-
+		foreach ( $wp_classes as $wp_class ) {
+			if ( preg_match( $pattern, $wp_class ) ) { array_push( $extra_classes, $wp_class ); }
 		}
+
+		// Custom classes we want to add
+		if ( get_post_type() && ! is_attachment() && ! is_search() ) { array_push( $extra_classes, 'post-type-' . sanitize_html_class( get_post_type() ) ); # [post-type]-[slug]
+		}		if ( is_page_template() ) { array_push( $extra_classes, 'template-' . sanitize_html_class( pathinfo( get_page_template() )['filename'] ) );  # template-[filename]
+		}		if ( is_front_page() ) { array_push( $extra_classes, 'template-front-page' ); # template-front-page
+		}		if ( is_home() ) { array_push( $extra_classes, 'template-blog' ); # template-blog
+		}
+		// Remove non-whitelisted classes
+		$wp_classes = array_intersect( $wp_classes, $whitelist );
+
+		// Merge extra classes and sort everything alphabetically
+		$theme_classes = array_merge( $wp_classes, $extra_classes );
+		sort( $theme_classes );
+
+		// Return modified classes
+		return $theme_classes;
+
 	}
+}
 
 if ( ! function_exists( 'theme_posted_on' ) ) :
-/**
+	/**
  * Prints HTML with meta information for the current post-date/time and author.
  */
 	function theme_posted_on() {
@@ -111,7 +111,7 @@ if ( ! function_exists( 'theme_posted_on' ) ) :
 endif;
 
 if ( ! function_exists( 'theme_categorized_blog' ) ) :
-/**
+	/**
  * Returns true if a blog has more than 1 category.
  *
  * @return bool
@@ -131,15 +131,15 @@ if ( ! function_exists( 'theme_categorized_blog' ) ) :
 		$categories = count( $categories );
 
 		// This blog has more than 1 category so theme_categorized_blog should return true.
-		if ( $categories > 1 ) return true;
+		if ( $categories > 1 ) { return true; }
 
 		// This blog has only 1 category so theme_categorized_blog should return false.
-		else return false;
+		else { return false; }
 	}
 endif;
 
 if ( ! function_exists( 'theme_entry_footer' ) ) :
-/**
+	/**
  * Prints HTML with meta information for the categories, tags and comments.
  */
 	function theme_entry_footer() {
@@ -171,7 +171,7 @@ if ( ! function_exists( 'theme_entry_footer' ) ) :
 endif;
 
 if ( ! function_exists( 'theme_archive_title' ) ) :
-/**
+	/**
  * Shim for `theme_archive_title()`.
  *
  * Display the archive title based on the queried object.

@@ -11,9 +11,9 @@
 	 * @link http://www.gravityhelp.com/documentation/gravity-forms/extending-gravity-forms/hooks/filters/gform_disable_admin_notification/
 	 */
 		add_filter( 'gform_disable_admin_notification', 'disable_gf_admin_notification', 10, 3 );
-		function disable_gf_admin_notification( $is_disabled, $form, $entry ) {
-			return true;
-		}
+function disable_gf_admin_notification( $is_disabled, $form, $entry ) {
+	return true;
+}
 
 	/**
 	 * Setup access to Gravity Forms based on a specific role

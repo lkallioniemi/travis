@@ -8,7 +8,7 @@
  */
 
 if ( ! function_exists( 'theme_setup' ) ) :
-/**
+	/**
  * Sets up theme defaults and registers support for various WordPress features.
  *
  * Note that this function is hooked into the after_setup_theme hook, which
@@ -18,7 +18,7 @@ if ( ! function_exists( 'theme_setup' ) ) :
 	add_action( 'after_setup_theme', 'theme_setup' );
 	function theme_setup() {
 
-	/**
+		/**
 	 * Make theme available for translation.
 	 * Translations can be filed in the /languages/ directory.
 	 * If you're building a theme based on _frc, use a find and replace
@@ -26,19 +26,19 @@ if ( ! function_exists( 'theme_setup' ) ) :
 	 */
 		load_theme_textdomain( '_frc', get_template_directory() . '/languages' );
 
-	/**
+		/**
 	 * Set custom image sizes
 	 *
 	 * @link http://codex.wordpress.org/Function_Reference/add_image_size
 	 */
-	#	add_image_size( 'featured-image', 1280, 350, array('center', 'center') );
+		#	add_image_size( 'featured-image', 1280, 350, array('center', 'center') );
 
-	/**
+		/**
 	 * Add custom styles to TinyMCE
 	 *
 	 * @link http://codex.wordpress.org/TinyMCE_Custom_Styles
 	 */
-	/*
+		/*
 		if ( ! function_exists( 'theme_mce_before_init' ) ) {
 			add_filter( 'tiny_mce_before_init', 'theme_mce_before_init' );
 			function theme_mce_before_init( $settings ) {
@@ -57,14 +57,14 @@ if ( ! function_exists( 'theme_setup' ) ) :
 				return $settings;
 			}
 		}
-	*/
+		*/
 
-	/**
+		/**
 	 * Add default posts and comments RSS feed links to head
 	 */
 		add_theme_support( 'automatic-feed-links' );
 
-	/**
+		/**
 	 * Let WordPress manage the document title.
 	 * By adding theme support, we declare that this theme does not use a
 	 * hard-coded <title> tag in the document head, and expect WordPress to
@@ -72,31 +72,31 @@ if ( ! function_exists( 'theme_setup' ) ) :
 	 */
 		add_theme_support( 'title-tag' );
 
-	/**
+		/**
 	 * Enable support for Post Thumbnails on posts and pages
 	 *
 	 * @link http://codex.wordpress.org/Function_Reference/add_theme_support#Post_Thumbnails
 	 */
 		add_theme_support( 'post-thumbnails' );
 
-	/**
+		/**
 	 * Enable support for Post Formats
 	 * See http://codex.wordpress.org/Post_Formats
 	 */
-	/*
+		/*
 		add_theme_support( 'post-formats', array(
 			'aside', 'image', 'video', 'quote', 'link',
 		) );
-	*/
+		*/
 
-	/**
+		/**
 	 * Add theme support for HTML5 Semantic Markup
 	 */
 		add_theme_support( 'html5', array(
 			'search-form', 'comment-form', 'comment-list', 'gallery', 'caption',
 		) );
 
-	/**
+		/**
 	 * Enable excerpts for pages
 	 *
 	 * @link http://codex.wordpress.org/Excerpt
@@ -106,7 +106,7 @@ if ( ! function_exists( 'theme_setup' ) ) :
 			add_post_type_support( 'page', 'excerpt' );
 		}
 
-	/**
+		/**
 	 * Set excerpt length
 	 *
 	 * @link http://codex.wordpress.org/Plugin_API/Filter_Reference/excerpt_length
@@ -117,7 +117,7 @@ if ( ! function_exists( 'theme_setup' ) ) :
 			return $excerpt_length;
 		}
 
-	/**
+		/**
 	 * Replace [...] in excerpts
 	 *
 	 * @link http://codex.wordpress.org/Plugin_API/Filter_Reference/excerpt_more

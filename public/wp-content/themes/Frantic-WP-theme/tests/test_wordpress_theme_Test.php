@@ -10,10 +10,10 @@ class WP_Test_WordPress_Theme_Tests extends PHPUnit_Framework_TestCase {
 	/**
 	 * Run a simple test to ensure that the tests are running
 	 */
-	 function test_tests() {
+	function test_tests() {
 
 		$this->assertTrue( true );
 
-	 }
+	}
 
 }

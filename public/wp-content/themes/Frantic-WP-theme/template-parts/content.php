@@ -15,7 +15,7 @@
 			<?php get_template_part( 'partials/partial', 'entry-header' ); ?>
 		</header>
 
-		<?php if ( has_post_thumbnail() ) get_template_part( 'partials/partial', 'entry-thumbnail' ); ?>
+		<?php if ( has_post_thumbnail() ) { get_template_part( 'partials/partial', 'entry-thumbnail' ); } ?>
 
 		<div class="entry-content">
 			<?php the_excerpt(); ?>

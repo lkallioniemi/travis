@@ -11,7 +11,7 @@
 	 * @param WP_Customize_Manager $wp_customize Theme Customizer object
 	 */
 		add_action( 'customize_register', 'theme_customize_register' );
-		function theme_customize_register( $wp_customize ) {
-			$wp_customize->get_setting( 'blogname' )->transport         = 'postMessage';
-			$wp_customize->get_setting( 'blogdescription' )->transport  = 'postMessage';
-		}
+function theme_customize_register( $wp_customize ) {
+	$wp_customize->get_setting( 'blogname' )->transport         = 'postMessage';
+	$wp_customize->get_setting( 'blogdescription' )->transport  = 'postMessage';
+}

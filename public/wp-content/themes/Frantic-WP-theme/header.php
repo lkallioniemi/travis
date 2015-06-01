@@ -24,18 +24,18 @@
 	// Meta description and keywords
 	if ( is_singular() || is_front_page() || is_home() ) :
 
-	$excerpt = get_the_excerpt();
-	$keywords = get_the_tag_list( false, ', ', false );
+		$excerpt = get_the_excerpt();
+		$keywords = get_the_tag_list( false, ', ', false );
 
-	if ( ! empty( $excerpt ) ) : echo "\n"; ?>
+		if ( ! empty( $excerpt ) ) : echo "\n"; ?>
 
-	<meta name="description" content="<?php echo strip_tags( trim( $excerpt ) ); ?>" /><?php
+		<meta name="description" content="<?php echo strip_tags( trim( $excerpt ) ); ?>" /><?php
 
 	endif;
 
-	if ( ! empty ( $keywords ) ) : ?>
+		if ( ! empty ( $keywords ) ) : ?>
 
-	<meta name="keywords" content="<?php echo strip_tags( $keywords ); ?>" /><?php
+		<meta name="keywords" content="<?php echo strip_tags( $keywords ); ?>" /><?php
 
 	endif; ?>
 
